@@ -8,4 +8,8 @@
     **Step-3:** python3 -m venv virtual_env <br/>
     **Step-4:** source virtual_env/bin/activate
 
-2. 
+
+#### Command to run pylint only for a directory
+```
+    pylint <directory name>
+```    
