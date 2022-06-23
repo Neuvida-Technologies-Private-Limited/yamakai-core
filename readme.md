@@ -8,6 +8,8 @@
     **Step-3:** python3 -m venv virtual_env <br/>
     **Step-4:** source virtual_env/bin/activate
 
+2. Install the general requirements to run the app
+3. Make a file .env file same as .env.example and take values from other fellow developer
 
 #### Command to run pylint only for a directory
 ```

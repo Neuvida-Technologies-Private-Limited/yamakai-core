@@ -8,7 +8,7 @@ Classes:
     DBUtils
 
 Functions:
-
+    __init_connection()
     read_db(db_name: string, query: string) -> list
 
 """
