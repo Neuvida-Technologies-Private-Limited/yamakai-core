@@ -16,7 +16,7 @@ class DBUtils:
     read_db(db_name, query):
         Returns the result after running a read query on the database.
     write_database(db_name, query):
-        Runs a query to perform a write operation on the database.
+        Runs a query to perform a write operation on the database and returns the results.
     """
 
     def __init__(self):
@@ -27,9 +27,9 @@ class DBUtils:
         """
         Returns the mysql connection object.
 
-                Parameters:
-                Returns:
-                        conn (pymysql.connections.Connection): connection object of sql
+        Parameters:
+        Returns:
+                conn (pymysql.connections.Connection): connection object of sql
         """
         try:
             # Creating a connection
@@ -53,12 +53,12 @@ class DBUtils:
         """
         Returns the result after running a read query on the database.
 
-                Parameters:
-                        db_name (str): Name of the database to connect
-                        query (str): Read query to be ran on the database
+        Parameters:
+                db_name (str): Name of the database to connect
+                query (str): Read query to be ran on the database
 
-                Returns:
-                        result (list): Binary string of the sum of a and b
+        Returns:
+                result (list): Binary string of the sum of a and b
         """
         try:
             # Fetching the db connection instance
@@ -86,8 +86,14 @@ class DBUtils:
 
     def write_database(self, db_name, query):
         """
-        input: query(string)
-        output: response
+        Runs a query to perform a write operation on the database and returns the results.
+
+        Parameters:
+                db_name (str): Name of the database to connect
+                query (str): Read query to be ran on the database
+
+        Returns:
+                response (list): Response after running the query.
         """
         try:
             # Fetching the conn connection instance
@@ -110,4 +116,4 @@ class DBUtils:
         except Exception as err:
 
             # Raising Exception
-            raise Exception(message) from err
+            raise Exception() from err
