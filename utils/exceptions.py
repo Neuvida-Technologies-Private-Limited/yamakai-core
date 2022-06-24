@@ -1,7 +1,16 @@
 class CustomError(Exception):
     """
-    To be used on invalid request data
-    message should be user friendly as it will be shown to the users
+    A class to represent a custom error.
+
+    ...
+
+    Attributes
+    ----------
+    message : str
+        error message to show the user
+
+    Methods
+    -------
     """
 
     def __init__(self, message):

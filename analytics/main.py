@@ -11,7 +11,12 @@ logging.basicConfig(level=logging.DEBUG)
 
 
 def main():
-    """Run all of the analytics tasks."""
+    '''
+    Run the analytics queries for the user.
+
+    Parameters:
+    Returns:
+    '''
 
 #    try:
     # Create instance of utils class
@@ -24,15 +29,19 @@ def main():
         # Printing the results
         for result in results:
             for key, value in result.items():
+
+                # Logging the results
                 logging.info(str(key))
                 logging.info(str(value))
 
-    # Running all the queries of the user usage
+    # Running all the queries of the repeated users
     for key, value in repeat_users.items():
         results = db_utils_instance.read_db("prod", value)
 
+        # Logging the keys
         logging.info(str(key))
-        # Printing the results
+
+        # logging the results
         for result in results:
             logging.info(result)
 
