@@ -10,6 +10,7 @@ Classes:
 Functions:
     __init_connection()
     read_db(db_name: string, query: string) -> list
+    write_database(db_name: string, query: string)
 
 """
-__all__ = ['db_utils']
+__all__ = ['db_utils', 'error', 'exceptions']

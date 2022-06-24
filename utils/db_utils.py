@@ -11,6 +11,16 @@ class DBUtils:
 
     @staticmethod
     def __init_connection():
+        """
+        Returns the mysql connection object.
+
+                Parameters:
+                        a (int): A decimal integer
+                        b (int): Another decimal integer
+
+                Returns:
+                        binary_sum (str): Binary string of the sum of a and b
+        """
         try:
             # Creating a connection
             conn = pymysql.connect(
@@ -33,8 +43,14 @@ class DBUtils:
     # Read the database
     def read_db(self, db_name, query):
         """
-        input: query(string)
-        output: response
+        Returns the sum of two decimal numbers in binary digits.
+
+                Parameters:
+                        a (int): A decimal integer
+                        b (int): Another decimal integer
+
+                Returns:
+                        binary_sum (str): Binary string of the sum of a and b
         """
         try:
             # Fetching the db connection instance
@@ -58,6 +74,7 @@ class DBUtils:
 
             # Raising Exception
             raise Exception() from err
+
 
     def write_database(self, db_name, query):
         """
