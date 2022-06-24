@@ -3,7 +3,20 @@ import env
 
 class DBUtils:
     """
-    This class contains the utilities regarding database
+    A class to have utils for the database.
+
+    ...
+
+    Attributes
+    ----------
+    Methods
+    -------
+    __init_connection():
+        Returns the mysql connection object.
+    read_db(db_name, query):
+        Returns the result after running a read query on the database.
+    write_database(db_name, query):
+        Runs a query to perform a write operation on the database.
     """
 
     def __init__(self):
@@ -15,11 +28,8 @@ class DBUtils:
         Returns the mysql connection object.
 
                 Parameters:
-                        a (int): A decimal integer
-                        b (int): Another decimal integer
-
                 Returns:
-                        binary_sum (str): Binary string of the sum of a and b
+                        conn (pymysql.connections.Connection): connection object of sql
         """
         try:
             # Creating a connection
@@ -39,18 +49,16 @@ class DBUtils:
             # Raising Exception
             raise Exception() from err
 
-
-    # Read the database
     def read_db(self, db_name, query):
         """
-        Returns the sum of two decimal numbers in binary digits.
+        Returns the result after running a read query on the database.
 
                 Parameters:
-                        a (int): A decimal integer
-                        b (int): Another decimal integer
+                        db_name (str): Name of the database to connect
+                        query (str): Read query to be ran on the database
 
                 Returns:
-                        binary_sum (str): Binary string of the sum of a and b
+                        result (list): Binary string of the sum of a and b
         """
         try:
             # Fetching the db connection instance
