@@ -15,3 +15,8 @@
 ```
     pylint <directory name>
 ```    
+#### Command to run any .py file
+```
+    python3 -m <folder>.<file without .py>
+    Example: python3 -m analytics.main
+```

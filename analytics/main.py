@@ -1,10 +1,14 @@
+"""
+Run user related queries for analytics.
+"""
 import logging
 from utils.db_utils import DBUtils
 from analytics.user_queries import user_queries, repeat_users
 
 
 # Setting up logging level to debug
-logger = logging.getLogger(__name__).setLevel(logging.DEBUG)
+logging.basicConfig(level=logging.DEBUG)
+
 
 def main():
     """Run all of the analytics tasks."""
@@ -20,15 +24,17 @@ def main():
         # Printing the results
         for result in results:
             for key, value in result.items():
-                print(key, ': ', value)
+                logging.info(str(key))
+                logging.info(str(value))
 
     # Running all the queries of the user usage
     for key, value in repeat_users.items():
         results = db_utils_instance.read_db("prod", value)
 
+        logging.info(str(key))
         # Printing the results
         for result in results:
-                print(result)
+            logging.info(result)
 
 if __name__ == '__main__':
     main()
