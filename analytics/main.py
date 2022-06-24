@@ -5,7 +5,6 @@ import logging
 from utils.db_utils import DBUtils
 from analytics.user_queries import user_queries, repeat_users
 
-
 # Setting up logging level to debug
 logging.basicConfig(level=logging.DEBUG)
 
@@ -18,13 +17,13 @@ def main():
     Returns:
     '''
 
-#    try:
+#
     # Create instance of utils class
     db_utils_instance = DBUtils()
 
     # Running all the queries of the user
     for key, value in user_queries.items():
-        results = db_utils_instance.read_db("prod", value)
+        results = db_utils_instance.read_db(value)
 
         # Printing the results
         for result in results:
@@ -36,7 +35,7 @@ def main():
 
     # Running all the queries of the repeated users
     for key, value in repeat_users.items():
-        results = db_utils_instance.read_db("prod", value)
+        results = db_utils_instance.read_db(value)
 
         # Logging the keys
         logging.info(str(key))

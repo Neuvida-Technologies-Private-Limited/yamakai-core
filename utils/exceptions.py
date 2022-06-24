@@ -1,6 +1,10 @@
+"""
+Class related to custom errors.
+"""
+
 class CustomError(Exception):
     """
-    A class to represent a custom error.
+    A class to represent a general custom error.
 
     ...
 
@@ -17,9 +21,3 @@ class CustomError(Exception):
 
         super().__init__(message)
         self.message = message
-
-
-    def __str__(self):
-
-        return 'CustomError, {0} '.format(self.message)
-

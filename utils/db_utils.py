@@ -1,5 +1,9 @@
+"""
+Class related to database utils.
+"""
 import pymysql
 import env
+from utils.exceptions import CustomError
 
 class DBUtils:
     """
@@ -13,10 +17,8 @@ class DBUtils:
     -------
     __init_connection():
         Returns the mysql connection object.
-    read_db(db_name, query):
+    read_db(query):
         Returns the result after running a read query on the database.
-    write_database(db_name, query):
-        Runs a query to perform a write operation on the database and returns the results.
     """
 
     def __init__(self):
@@ -47,14 +49,13 @@ class DBUtils:
         except Exception as err:
 
             # Raising Exception
-            raise Exception() from err
+            raise CustomError(str(err)) from err
 
-    def read_db(self, db_name, query):
+    def read_db(self, query):
         """
         Returns the result after running a read query on the database.
 
         Parameters:
-                db_name (str): Name of the database to connect
                 query (str): Read query to be ran on the database
 
         Returns:
@@ -81,39 +82,4 @@ class DBUtils:
         except Exception as err:
 
             # Raising Exception
-            raise Exception() from err
-
-
-    def write_database(self, db_name, query):
-        """
-        Runs a query to perform a write operation on the database and returns the results.
-
-        Parameters:
-                db_name (str): Name of the database to connect
-                query (str): Read query to be ran on the database
-
-        Returns:
-                response (list): Response after running the query.
-        """
-        try:
-            # Fetching the conn connection instance
-            conn = DBUtils.init_connection()
-
-            # Creating the cursor
-            cur = conn.cursor()
-
-            # Use all the SQL you like
-            response = cur.execute(query)
-
-            # Closing the connection
-            conn.commit()
-
-            # Closing the connection
-            conn.close()
-
-            return response
-
-        except Exception as err:
-
-            # Raising Exception
-            raise Exception() from err
+            raise CustomError(str(err)) from err

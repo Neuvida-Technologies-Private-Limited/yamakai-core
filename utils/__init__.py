@@ -9,8 +9,7 @@ Classes:
 
 Functions:
     __init_connection()
-    read_db(db_name: string, query: string) -> list
-    write_database(db_name: string, query: string)
+    read_db(query: string) -> list
 
 """
-__all__ = ['db_utils', 'error', 'exceptions']
+__all__ = ['db_utils', 'errors', 'exceptions']
