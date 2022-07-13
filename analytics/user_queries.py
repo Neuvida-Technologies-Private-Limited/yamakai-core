@@ -23,16 +23,20 @@ user_queries = {
                                 100 as 'Total Signups EMAIL (%)'",
     "Monthly Active Users": "SELECT LEFT(created_at, 7) AS Month, \
                              COUNT(id) AS MAU \
-                             FROM access_users \
+                             FROM access_user \
                             GROUP BY LEFT(created_at, 7)",
     "Daily Active Users":"SELECT DATE(created_at) AS DAY, \
                           COUNT(id) AS DAU \
-                          FROM access_users \
-                          GROUP BY DATE(created_at)",
+                          FROM access_user \
+                          GROUP BY DATE(created_at)\
+                          ORDER BY DAY DESC\
+                           LIMIT 30;",
     "Weekly Active Users":"SELECT WEEK(last_login) AS WEEK, \
-                           COUNT(user_id) AS WAU \
-                           FROM access_users \
-                           GROUP BY WEEK(last_login);"                                         
+                           COUNT(id) AS WAU \
+                           FROM access_user \
+                           GROUP BY WEEK(last_login) \
+                           ORDER BY WEEK DESC\
+                           LIMIT 4;"                                         
 
 }
 repeat_users = {
