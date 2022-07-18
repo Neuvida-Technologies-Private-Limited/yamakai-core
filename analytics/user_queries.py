@@ -19,7 +19,7 @@ user_queries = {
                             / (select count(*) from access_user) * 100 as \
                             'Total Signups PHONE (%)'",
     "Total Signups Email (%)": "select (select count(*) from access_user where email IS NOT \
-                                NULL and is_sso=0) (select count(*) from access_user) * \
+                                NULL and is_sso=0) / (select count(*) from access_user) * \
                                 100 as 'Total Signups EMAIL (%)'"
 }
 repeat_users = {
@@ -28,7 +28,8 @@ repeat_users = {
                             template_name ORDER BY total_template_name",
     "Users Email": "select access_user.email as email, \
                     first_name, last_name, date_format(utils_userinputs.created_at, \
-                    '%Y-%m-%d') as ran_at, template_name  from access_user cross join \
+                   '%Y-%m-%d') as ran_at, template_name \
+                    from access_user cross join \
                     utils_userinputs on access_user.id = utils_userinputs.user_id_id \
                     where email NOT IN ('vishalsingh1080@gmail.com', \
                     'vishalkonline@gmail.com','vishal25797.work@gmail.com', \
