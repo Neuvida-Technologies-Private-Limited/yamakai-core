@@ -21,6 +21,24 @@ user_queries = {
     "Total Signups Email (%)": "select (select count(*) from access_user where email IS NOT \
                                 NULL and is_sso=0) / (select count(*) from access_user) * \
                                 100 as 'Total Signups EMAIL (%)'"
+                                NULL and is_sso=0) (select count(*) from access_user) * \
+                                100 as 'Total Signups EMAIL (%)'",
+    "Monthly Active Users": "SELECT LEFT(created_at, 7) AS Month, \
+                             COUNT(id) AS MAU \
+                             FROM access_user \
+                            GROUP BY LEFT(created_at, 7)",
+    "Daily Active Users":"SELECT DATE(created_at) AS DAY, \
+                          COUNT(id) AS DAU \
+                          FROM access_user \
+                          GROUP BY DATE(created_at)\
+                          ORDER BY DAY DESC\
+                           LIMIT 30;",
+    "Weekly Active Users":"SELECT WEEK(last_login) AS WEEK, \
+                           COUNT(id) AS WAU \
+                           FROM access_user \
+                           GROUP BY WEEK(last_login) \
+                           ORDER BY WEEK DESC\
+                           LIMIT 4;"
 }
 repeat_users = {
     "Total template usage": "SELECT count(template_name) AS total_template_name, \
