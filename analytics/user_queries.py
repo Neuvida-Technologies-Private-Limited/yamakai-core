@@ -20,7 +20,7 @@ user_queries = {
                             'Total Signups PHONE (%)'",
     "Total Signups Email (%)": "select (select count(*) from access_user where email IS NOT \
                                 NULL and is_sso=0) / (select count(*) from access_user) * \
-                                100 as 'Total Signups EMAIL (%)'"
+                                100 as 'Total Signups EMAIL (%)' \
                                 NULL and is_sso=0) (select count(*) from access_user) * \
                                 100 as 'Total Signups EMAIL (%)'",
     "Monthly Active Users": "SELECT LEFT(created_at, 7) AS Month, \
