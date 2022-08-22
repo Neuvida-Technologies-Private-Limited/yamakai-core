@@ -54,7 +54,22 @@ user_queries = {
                     ORDER BY a.user_id_id",
     "Total signups":"SELECT COUNT(DISTINCT id) AS 'Total signups' \
                      FROM access_user;",
-
+    "Power users":  "SELECT b.id,\
+	                        b.repeat_days,\
+                            au.phone,\
+                            au.email, \
+                            au.first_name,\
+                            au.last_name \
+                     FROM (SELECT id, COUNT(*) repeat_days \
+	                       FROM (SELECT DATE(created_at) AS date, \
+                                        created_by_id AS id \
+                                 FROM utils_gpt3outputs \
+                                 GROUP BY DATE(created_at),created_by_id \
+                                 ORDER BY date DESC) a \
+                           GROUP BY id \
+                           HAVING COUNT(*) > 1 \
+                           ORDER BY id) b \
+                     JOIN access_user AS au ON b.id = au.id"
 }
 repeat_users = {
     "Total template usage": "SELECT count(template_name) AS total_template_name, \

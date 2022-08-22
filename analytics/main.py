@@ -33,7 +33,7 @@ def main():
                 logging.info(str(key))
                 logging.info(str(value))
 
-    # Running all the queries of the repeated users
+    #Running all the queries of the repeated users
     for key, value in repeat_users.items():
         results = db_utils_instance.read_db(value)
 
