@@ -24,16 +24,16 @@ user_queries = {
                                 NULL and is_sso=0) (select count(*) from access_user) * \
                                 100 as 'Total Signups EMAIL (%)'",
     "Monthly Signups": "SELECT LEFT(created_at, 7) AS Month, \
-                             COUNT(id) AS MAU \
+                             COUNT(id) AS 'Monthly signups' \
                              FROM access_user \
                             GROUP BY LEFT(created_at, 7)",
     "Daily Signups":"SELECT DATE(created_at) AS DAY, \
-                          COUNT(id) AS DAU \
+                          COUNT(id) AS 'Daily signups' \
                           FROM access_user \
                           GROUP BY DATE(created_at)\
                           ORDER BY DAY DESC\
                            LIMIT 30;",
-    "Weekly Signups":"SELECT WEEK(last_login) AS WEEK, \
+    "Weekly active users":"SELECT WEEK(last_login) AS WEEK, \
                            COUNT(id) AS WAU \
                            FROM access_user \
                            GROUP BY WEEK(last_login) \
