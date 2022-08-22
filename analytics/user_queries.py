@@ -33,12 +33,17 @@ user_queries = {
                           GROUP BY DATE(created_at)\
                           ORDER BY DAY DESC\
                            LIMIT 30;",
-    "Weekly active users":"SELECT WEEK(last_login) AS WEEK, \
-                           COUNT(id) AS WAU \
-                           FROM access_user \
-                           GROUP BY WEEK(last_login) \
-                           ORDER BY WEEK DESC\
+    "Weekly active users":"SELECT WEEK(created_at) AS WEEK, \
+                           COUNT(DISTINCT created_by_id) AS WAU \
+                           FROM utils_gpt3outputs \
+                           GROUP BY WEEK(created_at) \
+                           ORDER BY WEEK DESC \
                            LIMIT 4;",
+    "Monthly active users":"SELECT MONTH(created_at) AS MONTH, \
+                           COUNT(DISTINCT created_by_id) AS MAU \
+                           FROM utils_gpt3outputs \
+                           GROUP BY MONTH(created_at) \
+                           ORDER BY MONTH DESC;",                       
     "I/O Template":"SELECT a.user_id_id AS user_id, \
                     a.template_name AS template,\
                     a.input,\
