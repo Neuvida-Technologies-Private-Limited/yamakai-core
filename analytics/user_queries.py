@@ -23,17 +23,17 @@ user_queries = {
                                 100 as 'Total Signups EMAIL (%)' \
                                 NULL and is_sso=0) (select count(*) from access_user) * \
                                 100 as 'Total Signups EMAIL (%)'",
-    "Monthly Active Users": "SELECT LEFT(created_at, 7) AS Month, \
+    "Monthly Signups": "SELECT LEFT(created_at, 7) AS Month, \
                              COUNT(id) AS MAU \
                              FROM access_user \
                             GROUP BY LEFT(created_at, 7)",
-    "Daily Active Users":"SELECT DATE(created_at) AS DAY, \
+    "Daily Signups":"SELECT DATE(created_at) AS DAY, \
                           COUNT(id) AS DAU \
                           FROM access_user \
                           GROUP BY DATE(created_at)\
                           ORDER BY DAY DESC\
                            LIMIT 30;",
-    "Weekly Active Users":"SELECT WEEK(last_login) AS WEEK, \
+    "Weekly Signups":"SELECT WEEK(last_login) AS WEEK, \
                            COUNT(id) AS WAU \
                            FROM access_user \
                            GROUP BY WEEK(last_login) \
@@ -46,7 +46,10 @@ user_queries = {
                     FROM utils_userinputs AS a \
                     JOIN utils_gpt3outputs AS b ON a.id  = b.user_input_id_id \
                     WHERE a.template_name = 'SUBJECT_LINE' \
-                    ORDER BY a.user_id_id"                       
+                    ORDER BY a.user_id_id",
+    "Total signups":"SELECT COUNT(DISTINCT id) AS 'Total signups' \
+                     FROM access_user;",
+
 }
 repeat_users = {
     "Total template usage": "SELECT count(template_name) AS total_template_name, \
