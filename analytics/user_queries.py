@@ -38,7 +38,15 @@ user_queries = {
                            FROM access_user \
                            GROUP BY WEEK(last_login) \
                            ORDER BY WEEK DESC\
-                           LIMIT 4;"
+                           LIMIT 4;",
+    "I/O Template":"SELECT a.user_id_id AS user_id, \
+                    a.template_name AS template,\
+                    a.input,\
+                    b.output \
+                    FROM utils_userinputs AS a \
+                    JOIN utils_gpt3outputs AS b ON a.id  = b.user_input_id_id \
+                    WHERE a.template_name = 'SUBJECT_LINE' \
+                    ORDER BY a.user_id_id"                       
 }
 repeat_users = {
     "Total template usage": "SELECT count(template_name) AS total_template_name, \
