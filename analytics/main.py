@@ -31,7 +31,8 @@ def main():
         for result in results:
             res.append(result)
 
-        print(pd.DataFrame(res))    
+        df = pd.DataFrame(res)
+        df.to_excel('power-users.xlsx')   
             #for key, value in result.items():
 
                 # Logging the results
