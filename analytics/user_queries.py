@@ -75,7 +75,42 @@ user_queries = {
                            GROUP BY id \
                            HAVING COUNT(*) > 1 \
                            ORDER BY id) b \
-                     JOIN access_user AS au ON b.id = au.id"
+                     JOIN access_user AS au ON b.id = au.id",
+     "Power_Users-templates":"SELECT b.id,\
+	                                 b.repeat_days,\
+                                     au.phone,\
+                                     au.email, \
+                                     au.first_name,\
+                                     au.last_name,\
+                                     uu.template_name \
+                              FROM (SELECT id, COUNT(*) repeat_days \
+	                                FROM (SELECT DATE(created_at) AS date, \
+                                                 created_by_id AS id \
+                                          FROM utils_gpt3outputs \
+                                          GROUP BY DATE(created_at),created_by_id \
+                                          ORDER BY date DESC) a \
+                                     GROUP BY id \
+                                     HAVING COUNT(*) > 1 \
+                                     ORDER BY id) b \
+                              JOIN access_user AS au ON b.id = au.id\
+                              LEFT JOIN utils_userinputs uu ON b.id = uu.user_id_id",
+      "template-use-all-time": "SELECT template_name, COUNT(id) AS template_use\
+                                FROM utils_userinputs \
+                                GROUP BY template_name\
+                                ORDER BY template_use", 
+      "template-use-monthly":"SELECT MONTH(created_at), template_name, COUNT(id) AS template_use \
+                              FROM utils_userinputs \
+                              GROUP BY MONTH(created_at),template_name \
+                              ORDER BY MONTH(created_at),template_use",
+      "template-use-weekly":"SELECT WEEK(created_at), template_name, COUNT(id) AS template_use \
+                              FROM utils_userinputs \
+                              GROUP BY WEEK(created_at),template_name \
+                              ORDER BY MONTH(created_at) DESC,template_use",
+      "user-no-usage":"SELECT id, email, phone, first_name, last_name \
+                       FROM access_user \
+                       WHERE id NOT IN (SELECT au.id \
+				                FROM access_user au \
+				                JOIN utils_userinputs uu ON au.id = uu.user_id_id)",                                                                                                                                                     
 }
 repeat_users = {
     "Total template usage": "SELECT count(template_name) AS total_template_name, \

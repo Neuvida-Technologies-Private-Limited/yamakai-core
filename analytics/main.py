@@ -32,7 +32,8 @@ def main():
             res.append(result)
 
         df = pd.DataFrame(res)
-        df.to_excel('power-users.xlsx')   
+        print(df)
+        #df.to_excel('power-users-templates.xlsx')   
             #for key, value in result.items():
 
                 # Logging the results
