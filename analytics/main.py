@@ -32,8 +32,8 @@ def main():
             res.append(result)
 
         df = pd.DataFrame(res)
-        #print(df)
-        df.to_excel('template-weekly-usage.xlsx')   
+        print(df)
+        #df.to_excel('template-weekly-usage.xlsx')   
             #for key, value in result.items():
 
                 # Logging the results
