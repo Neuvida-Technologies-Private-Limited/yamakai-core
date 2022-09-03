@@ -33,7 +33,7 @@ def main():
 
         df = pd.DataFrame(res)
         print(df)
-        #df.to_excel('template-weekly-usage.xlsx')   
+        #df.to_excel('power-users.xlsx')   
             #for key, value in result.items():
 
                 # Logging the results

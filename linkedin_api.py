@@ -2,6 +2,7 @@ import requests
 from linkedin_auth import auth, headers
 
 # https://docs.microsoft.com/en-us/linkedin/consumer/integrations/self-serve/sign-in-with-linkedin
+# tutorial - https://www.jcchouinard.com/linkedin-api/
 # basic API requests
 def user_info(headers):
     '''
