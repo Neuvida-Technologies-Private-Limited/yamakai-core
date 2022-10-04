@@ -23,24 +23,24 @@ user_queries = {
 #                                 100 as 'Total Signups EMAIL (%)' \
 #                                 NULL and is_sso=0) (select count(*) from access_user) * \
 #                                 100 as 'Total Signups EMAIL (%)'",
-#     "Total signups count": "SELECT count(if(is_sso = 1,1,null)) as SSO_count, \
-#                                    count(case when email is not null then 1 else null end) as email_count, \
-#                                    count(case when phone is not null then 1 else null end) as phone_count \
-#                             FROM access_user",
-#     "Monthly Signups count": "SELECT MONTH(created_at), \
-#                                      count(if(is_sso = 1,1,null)) as SSO_count, \
-#                                      count(case when email is not null then 1 else null end) as email_count, \
-#                                      count(case when phone is not null then 1 else null end) as phone_count \
-#                               FROM access_user \
-#                               GROUP BY MONTH(created_at) \
-#                               ORDER BY MONTH(created_at)",
-#      "Weekly signups count": "SELECT WEEK(created_at), \
-#                                      count(if(is_sso = 1,1,null)) as SSO_count, \
-#                                      count(case when email is not null then 1 else null end) as email_count, \
-#                                      count(case when phone is not null then 1 else null end) as phone_count \
-#                               FROM access_user \
-#                               GROUP BY WEEK(created_at) \
-#                               ORDER BY WEEK(created_at) DESC", 
+    # "Total signups count": "SELECT count(if(is_sso = 1,1,null)) as SSO_count, \
+    #                                count(case when email is not null then 1 else null end) as email_count, \
+    #                                count(case when phone is not null then 1 else null end) as phone_count \
+    #                         FROM access_user",
+    # "Monthly Signups count": "SELECT MONTH(created_at), \
+    #                                  count(if(is_sso = 1,1,null)) as SSO_count, \
+    #                                  count(case when email is not null then 1 else null end) as email_count, \
+    #                                  count(case when phone is not null then 1 else null end) as phone_count \
+    #                           FROM access_user \
+    #                           GROUP BY MONTH(created_at) \
+    #                           ORDER BY MONTH(created_at)",
+    #  "Weekly signups count": "SELECT WEEK(created_at), \
+    #                                  count(if(is_sso = 1,1,null)) as SSO_count, \
+    #                                  count(case when email is not null then 1 else null end) as email_count, \
+    #                                  count(case when phone is not null then 1 else null end) as phone_count \
+    #                           FROM access_user \
+    #                           GROUP BY WEEK(created_at) \
+    #                           ORDER BY WEEK(created_at) DESC", 
 #     "Daily Signups":"SELECT DATE(created_at) AS DAY, \
 #                           COUNT(id) AS 'Daily signups' \
 #                           FROM access_user \
@@ -53,23 +53,23 @@ user_queries = {
 #                           GROUP BY WEEK(created_at)\
 #                           ORDER BY Week DESC\
 #                            LIMIT 4;",                      
-#     "Weekly active users":"SELECT WEEK(created_at) AS WEEK, \
-#                            COUNT(DISTINCT created_by_id) AS WAU \
-#                            FROM utils_gpt3outputs \
-#                            GROUP BY WEEK(created_at) \
-#                            ORDER BY WEEK DESC \
-#                            LIMIT 4;",
-#     "Monthly active users":"SELECT MONTH(created_at) AS MONTH, \
-#                            COUNT(DISTINCT created_by_id) AS MAU \
-#                            FROM utils_gpt3outputs \
-#                            GROUP BY MONTH(created_at) \
-#                            ORDER BY MONTH DESC;",
-#      "Total generations by week":"SELECT WEEK(created_at) AS WEEK, \
-#                                          COUNT(id)  \
-#                                   FROM utils_userinputs \
-#                                   GROUP BY WEEK(created_at) \
-#                                   ORDER BY WEEK DESC \
-#                                   LIMIT 4;",
+    # "Weekly active users":"SELECT WEEK(created_at) AS WEEK, \
+    #                        COUNT(DISTINCT created_by_id) AS WAU \
+    #                        FROM utils_gpt3outputs \
+    #                        GROUP BY WEEK(created_at) \
+    #                        ORDER BY WEEK DESC \
+    #                        LIMIT 8;",
+    # "Monthly active users":"SELECT MONTH(created_at) AS MONTH, \
+    #                        COUNT(DISTINCT created_by_id) AS MAU \
+    #                        FROM utils_gpt3outputs \
+    #                        GROUP BY MONTH(created_at) \
+    #                        ORDER BY MONTH DESC;",
+    #  "Total generations by week":"SELECT WEEK(created_at) AS WEEK, \
+    #                                      COUNT(id)  \
+    #                               FROM utils_userinputs \
+    #                               GROUP BY WEEK(created_at) \
+    #                               ORDER BY WEEK DESC \
+    #                               LIMIT 8;",
      "Total generations by month":"SELECT MONTH(created_at) AS MONTH, \
                             COUNT(id) \
                             FROM utils_userinputs\
