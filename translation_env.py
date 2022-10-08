@@ -14,20 +14,26 @@ client = translate.TranslationServiceClient()
 
 translate = boto3.client(service_name='translate', region_name='ap-south-1', use_ssl=True)
 
-result = translate.translate_text(Text="1. Renegade is the best platform to buy premium self-care and grooming products for men online. \n \
-        2. We feature all the top brands as well as upcoming brands that are gaining market traction. \n \
-        3. We provide a convenient platform for men to shop for all their self-care and grooming needs in one place. \n \
-        4. Our products are carefully curated and chosen for their quality, functionality, and style. \n \
-        5. We offer free shipping on orders over $100 and easy returns so you can shop with confidence. \n \
-        6. For more information, please visit our website at www.renegadegroomingco.com or contact us at info@renegadegroomingco", 
-            SourceLanguageCode="en", TargetLanguageCode="de")
+result = translate.translate_text(Text="""Metallurgy is a domain of materials science and engineering 
+that studies the physical and chemical behavior of metallic
+elements, their inter-metallic compounds, and their mixtures,
+which are known as alloys. Metallurgy encompasses both 
+the science and the technology of metals; that is, the way in 
+which science is applied to the production of metals, and the 
+engineering of metal components used in products for both 
+consumers and manufacturers. Metallurgy is distinct from 
+the craft of metalworking. Metalworking relies on metallurgy 
+in a similar manner to how medicine relies on medical science
+for technical advancement. A specialist practitioner of 
+metallurgy is known as a metallurgist.""", 
+            SourceLanguageCode="en", TargetLanguageCode="sk")
 print('TranslatedText: ' + result.get('TranslatedText'))
 print('SourceLanguageCode: ' + result.get('SourceLanguageCode'))
 print('TargetLanguageCode: ' + result.get('TargetLanguageCode'))
 
-## Mircrosoft translate
+# ## Mircrosoft translate
 
-key = "get-it-from-azure"
+key = "b5c62ef73ffa43d88fe085eef093e44c"
 endpoint = "https://api.cognitive.microsofttranslator.com"
 
 # location, also known as region.
@@ -40,7 +46,7 @@ constructed_url = endpoint + path
 params = {
     'api-version': '3.0',
     'from': 'en',
-    'to': ['fr']
+    'to': ['sk']
 }
 
 headers = {
@@ -53,13 +59,19 @@ headers = {
 
 # You can pass more than one object in body.
 body = [{
-    'text':"""1. Renegade is the best platform to buy premium self-care and grooming products for men online. 
-              2. We feature all the top brands as well as upcoming brands that are gaining market traction.
-              3. We provide a convenient platform for men to shop for all their self-care and grooming needs in one place. 
-              4. Our products are carefully curated and chosen for their quality, functionality, and style.
-              5. We offer free shipping on orders over $100 and easy returns so you can shop with confidence.
-              6. For more information, please visit our website at www.renegadegroomingco.com or contact us at info@renegadegroomingco"""
-}]
+    'text':"""Metallurgy is a domain of materials science and engineering 
+that studies the physical and chemical behavior of metallic
+elements, their inter-metallic compounds, and their mixtures,
+which are known as alloys. Metallurgy encompasses both 
+the science and the technology of metals; that is, the way in 
+which science is applied to the production of metals, and the 
+engineering of metal components used in products for both 
+consumers and manufacturers. Metallurgy is distinct from 
+the craft of metalworking. Metalworking relies on metallurgy 
+in a similar manner to how medicine relies on medical science
+for technical advancement. A specialist practitioner of 
+metallurgy is known as a metallurgist."""
+    }]
 
 request = requests.post(constructed_url, params=params, headers=headers, json=body)
 response = request.json()
