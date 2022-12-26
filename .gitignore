@@ -1,5 +1,5 @@
 virtual_env/
-content/drive/MyDrive/yamakai-core/OPT_Paraphraser/pushkar_OPT_paraphaser/
+/content/drive/MyDrive/yamakai-core/OPT_Paraphraser/pushkar_OPT_paraphaser/
 *.json
 *.xlsx
 *.csv
