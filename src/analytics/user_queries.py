@@ -52,13 +52,13 @@ user_queries = {
                           FROM access_user \
                           GROUP BY WEEK(created_at)\
                           ORDER BY Week DESC\
-                           LIMIT 4;",                      
+                           LIMIT 50;",                      
     "Weekly active users":"SELECT WEEK(created_at) AS WEEK, \
                            COUNT(DISTINCT created_by_id) AS WAU \
                            FROM utils_gpt3outputs \
                            GROUP BY WEEK(created_at) \
                            ORDER BY WEEK DESC \
-                           LIMIT 8;",
+                           LIMIT 50;",
     "Monthly active users":"SELECT MONTH(created_at) AS MONTH, \
                            COUNT(DISTINCT created_by_id) AS MAU \
                            FROM utils_gpt3outputs \
@@ -69,7 +69,7 @@ user_queries = {
                                   FROM utils_userinputs \
                                   GROUP BY WEEK(created_at) \
                                   ORDER BY WEEK DESC \
-                                  LIMIT 8;",
+                                  LIMIT 50;",
      "Total generations by month":"SELECT MONTH(created_at) AS MONTH, \
                             COUNT(id) \
                             FROM utils_userinputs\
